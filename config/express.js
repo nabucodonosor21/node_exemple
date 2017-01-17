@@ -7,6 +7,7 @@ module.exports = function() {
 
 		var app = express();
 
+		/* MIDDLEWARES */
 		app.use(express.static('./app/public'))
 		app.set('view engine', 'ejs');
 		app.set('views','./app/views');
@@ -18,6 +19,16 @@ module.exports = function() {
 		load('routes', {cwd: 'app'})
 				.then('infra')
 				.into(app);
+
+		app.use(function(req,res,next){
+					res.status(404).render('erros/404');
+					next();
+		});
+
+		app.use(function(error,req,res,next){
+					res.status(500).render('erros/500');
+					next();
+		});
 
 	return app;
 }
