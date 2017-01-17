@@ -20,7 +20,7 @@ var configuracoes = {
 });
 
 var produto = {
-    titulo : 'Cadastrahndo via REST',
+    titulo : '',
     descricao : 'Node js',
     preco : 100
 };
